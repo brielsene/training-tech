@@ -3,10 +3,11 @@ package br.com.trainingtech.acao;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.trainingtech.dao.PessoaDAO;
-import br.com.trainingtech.util.JPAUtil;
 import br.com.trainingtech.model.Pessoa;
+import br.com.trainingtech.util.JPAUtil;
 
 public class Login implements Acao {
 
@@ -20,7 +21,8 @@ public class Login implements Acao {
 		if(verificaLogin == null) {
 			return "redirect:controller?acao=FormLogin";
 		}
-		
+		HttpSession sessao = request.getSession();
+		sessao.setAttribute("usuarioLogado", verificaLogin);
 		return "redirect:controller?acao=HomePage";
 	}
 
