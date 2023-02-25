@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Login</title>
+	<title>Cadastro</title>
 	<style>
 		.login-form {
 		    width: 400px;
@@ -52,16 +52,12 @@
 		    border-radius: 3px;
 		    cursor: pointer;
 		}
-		
-		a href{
-			color:black;
-		}
 	</style>
 </head>
 <body>
 	<div class="login-form">
-		<h2>Login</h2>
-		<form action="/trainingtech/controller?acao=Login" method="post">
+		<h2>Cadastro</h2>
+		<form action="/trainingtech/controller?acao=CadastroUsuario" method="post">
 			<div class="form-group">
 				<label for="username">Usuário:</label>
 				<input type="text"  name="usuario" required>
@@ -71,9 +67,6 @@
 				<input type="password" name="senha" required>
 			</div>
 			<input type="submit" value="Login">
-			
-			<br><br><br>
-			<h2>Caso não tenha login,<br>  <a href="/trainingtech/controller?acao=FormCadastroUsuario"><div class="form-group">Cadastre-se</div></a> </div></br></h2>
 		</form>
 	</div>
 </body>

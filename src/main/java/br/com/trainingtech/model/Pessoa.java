@@ -1,6 +1,7 @@
 package br.com.trainingtech.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,14 +16,14 @@ public class Pessoa {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome;
-	private double peso;
-	private double altura;
+	private BigDecimal peso;
+	private BigDecimal altura;
 	private BigDecimal imc;
 	private String usuario;
 	private String senha;
 	
 	
-	public Pessoa(String nome, double peso, double altura, BigDecimal imc) {
+	public Pessoa(String nome, BigDecimal peso, BigDecimal altura, BigDecimal imc) {
 		this.nome = nome;
 		this.peso = peso;
 		this.altura = altura;
@@ -33,14 +34,14 @@ public class Pessoa {
 		
 	}
 
-	public Pessoa(String nome, double peso, double altura) {
+	public Pessoa(String nome, BigDecimal peso, BigDecimal altura) {
 		super();
 		this.nome = nome;
 		this.peso = peso;
 		this.altura = altura;
 	}
 	
-	public Pessoa(String nome, double peso, double altura, BigDecimal imc, String usuario, String senha) {
+	public Pessoa(String nome, BigDecimal peso, BigDecimal altura, BigDecimal imc, String usuario, String senha) {
 		this.nome = nome;
 		this.peso = peso;
 		this.altura = altura;
@@ -70,19 +71,19 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public double getPeso() {
+	public BigDecimal getPeso() {
 		return peso;
 	}
 
-	public void setPeso(double peso) {
+	public void setPeso(BigDecimal peso) {
 		this.peso = peso;
 	}
 
-	public double getAltura() {
+	public BigDecimal getAltura() {
 		return altura;
 	}
 
-	public void setAltura(double altura) {
+	public void setAltura(BigDecimal altura) {
 		this.altura = altura;
 	}
 
@@ -116,19 +117,14 @@ public class Pessoa {
 				+ ", usuario=" + usuario + ", senha=" + senha + "]";
 	}
 
-	public void calculaIMC() {
-		double resultado = this.peso/(this.altura*2);
-		
-		this.imc = BigDecimal.valueOf(resultado);
+	public BigDecimal calculaIMC() {
+		this.imc = this.peso.divide(this.altura.multiply(new BigDecimal("2")),2, RoundingMode.HALF_UP);
+		return imc;
+
 	}
 	
 	
-	public boolean Autenticacao(String login, String senha) {
-		if(!(this.usuario.equals(login)&this.senha.equals(senha))) {
-			return false;
-		}else {
-			return true;
-		}
+	
 		
 	}
 	
@@ -139,4 +135,4 @@ public class Pessoa {
 	
 	
 
-}
+

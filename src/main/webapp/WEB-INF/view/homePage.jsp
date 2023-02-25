@@ -7,23 +7,96 @@
 <title>Training tech</title>
 </head>
 
-<style>
-      /* Define o estilo do texto */
-      h1 {
-        font-size: 48px;
-        color: #ff00ff;
-        text-align: center;
-        margin-top: 200px;
-      }
-      
-      body {
-        background-color: #000000;
-      }
-    </style>
-    
+ <style>
+    body {
+      background-color: #282c34;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #61dafb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 50px;
+    }
+
+    p {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    button {
+      background-color: #61dafb;
+      color: #fff;
+      font-size: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #282c34;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #282c34;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    footer p {
+      font-size: 16px;
+      margin: 0;
+    }
+  </style>
+</head>
+
 <body>
+  <header>
+    
+    <button>Entrar</button>
+  </header>
 
-<h1>olá</h1>
+  <h1>Olá ${usuarioLogado.nome}</h1>
 
+  <section>
+    <p>Peso: ${usuarioLogado.peso}</p>
+    <p>Altura: ${usuarioLogado.altura}</p>
+    <button onclick="somar()">Calcular imc</button>
+    <p class="imc"></p>
+    <script>
+
+    
+    var imc = ${usuarioLogado.imc}
+    function somar(){
+    	document.querySelector(".imc").innerHTML = imc;
+    }
+    </script>
+  </section>
+
+  <footer>
+    <p>Training Tech &copy; 2023</p>
+  </footer>
 </body>
 </html>
