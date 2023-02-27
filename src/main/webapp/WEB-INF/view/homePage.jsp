@@ -55,6 +55,7 @@
     button:hover {
       background-color: #282c34;
       color: #fff;
+      
     }
 
     footer {
@@ -75,7 +76,9 @@
 <body>
   <header>
     
-    <button>Entrar</button>
+    <a href="/trainingtech/controller?acao=Logout">
+    	<button>Logout</button>
+    </a>
   </header>
 
   <h1>Olá ${usuarioLogado.nome}</h1>
@@ -83,16 +86,9 @@
   <section>
     <p>Peso: ${usuarioLogado.peso}</p>
     <p>Altura: ${usuarioLogado.altura}</p>
-    <button onclick="somar()">Calcular imc</button>
+    <button type="submit">Calcular imc</button>
     <p class="imc"></p>
-    <script>
-
-    
-    var imc = ${usuarioLogado.imc}
-    function somar(){
-    	document.querySelector(".imc").innerHTML = imc;
-    }
-    </script>
+   
   </section>
 
   <footer>
