@@ -43,8 +43,8 @@ public class PessoaDAO {
 	}
 
 	public Pessoa buscaPessoaPeloId(Integer id) {
-		em.getTransaction().begin();
 		return em.find(Pessoa.class, id);
+		
 		
 	}
 
