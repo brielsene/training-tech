@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,10 @@ public class Pessoa {
 	private BigDecimal imc;
 	private String usuario;
 	private String senha;
+	
+	//@OneToOne
+//	private Treino treino;
+	
 	
 	
 	public Pessoa(String nome, BigDecimal peso, BigDecimal altura, BigDecimal imc) {
@@ -109,6 +114,16 @@ public class Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+//	public Treino getTreino() {
+//		return treino;
+//	}
+//	
+//	public void setTreino(Treino treino) {
+//		this.treino = treino;
+//	}
+			
+			
 
 	
 	@Override

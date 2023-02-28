@@ -87,9 +87,7 @@
     <p>Peso: ${usuarioLogado.peso}</p>
     <p>Altura: ${usuarioLogado.altura}</p>
     
-    <a href="/trainingtech/controller?acao=CalculaImc&id=${usuarioLogado.id }">
-     <button >Calcular imc</button>
-     </a>
+
     <p class="imc"></p>
     IMC: ${imc }
    
