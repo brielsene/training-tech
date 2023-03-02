@@ -1,5 +1,7 @@
 package br.com.trainingtech.acao;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,17 @@ public class CalculaImc implements Acao {
 		Integer id = Integer.valueOf(request.getParameter("id"));
 		PessoaDAO pessoaDao = new PessoaDAO(em);
 		Pessoa buscaPessoaPeloId = pessoaDao.buscaPessoaPeloId(id);
+		System.out.println("É: " + buscaPessoaPeloId.getAltura());
+
+		if (buscaPessoaPeloId.getAltura().equals(new BigDecimal("0.00"))
+				&& buscaPessoaPeloId.getPeso().equals(new BigDecimal("0.00"))) {
+			HttpSession sessao = request.getSession();
+			sessao.setAttribute("id", buscaPessoaPeloId.getId());
+			
+			
+			return "redirect:controller?acao=FormParaImc";
+
+		}
 		buscaPessoaPeloId.calculaIMC();
 		em.getTransaction().commit();
 		em.close();

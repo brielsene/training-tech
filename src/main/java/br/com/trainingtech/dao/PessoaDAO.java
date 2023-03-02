@@ -1,5 +1,7 @@
 package br.com.trainingtech.dao;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 
 import br.com.trainingtech.util.JPAUtil;
@@ -16,6 +18,8 @@ public class PessoaDAO {
 	}
 
 	public void adicionarPessoa(Pessoa pessoa) {
+		pessoa.setAltura(BigDecimal.ZERO);
+		pessoa.setPeso(BigDecimal.ZERO);
 		em.getTransaction().begin();
 		em.persist(pessoa);
 		
@@ -44,6 +48,13 @@ public class PessoaDAO {
 
 	public Pessoa buscaPessoaPeloId(Integer id) {
 		return em.find(Pessoa.class, id);
+		
+		
+	}
+
+	public void atualizaPessoa(Pessoa pessoa) {
+		em.getTransaction().begin();
+		em.merge(pessoa);
 		
 		
 	}
