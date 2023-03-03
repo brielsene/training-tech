@@ -89,7 +89,7 @@
     
 
     <p class="imc"></p>
-    IMC: ${imc }
+    IMC: ${usuarioLogado.imc }
    
   </section>
 
